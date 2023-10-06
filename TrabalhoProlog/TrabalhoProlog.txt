@@ -1,0 +1,41 @@
+Questão 01:
+
+progenitor(vilson, leandro).
+progenitor(vilson, debora).
+progenitor(leandro, gabriel).
+progenitor(leandro, milena).
+progenitor(luciana, gabriel).
+progenitor(luciana, milena).
+progenitor(milena, icaro).
+progenitor(gabriel, victor).
+
+sexo(leandro, masculino).
+sexo(gabriel, masculino).
+sexo(victor, masculino).
+sexo(icaro, masculino).
+sexo(luciana, feminino).
+sexo(milena,feminino).
+
+
+ascendente(X,Y) :- progenitor(X,Y).
+ascendente(X,Y) :- progenitor(X, A),
+                 ascendente(A, Y).
+
+
+irmao(X,Y) :- progenitor(P,Y),
+            progenitor(P,X),
+            Y \= X.
+
+primo(X,Y) :- progenitor(P1, X),
+            progenitor(P2,Y),
+            irmao(P1,P2).
+
+filhosEmComum(X,Y) :- progenitor(X,F),
+                    progenitor(Y,F).
+
+sobrinha(X,Y) :- progenitor(P, X),
+               irmao(P,Y),
+               sexo(X, feminino).
+---------------------------------------------------------------------------------------
+Questão 02:
+
