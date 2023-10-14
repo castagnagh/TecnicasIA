@@ -1,4 +1,4 @@
-Questão 01:
+Questão 01, 02, 03, 04, 05:
 
 progenitor(vilson, leandro).
 progenitor(vilson, debora).
@@ -21,7 +21,6 @@ ascendente(X,Y) :- progenitor(X,Y).
 ascendente(X,Y) :- progenitor(X, A),
                  ascendente(A, Y).
 
-
 irmao(X,Y) :- progenitor(P,Y),
             progenitor(P,X),
             Y \= X.
@@ -37,7 +36,7 @@ sobrinha(X,Y) :- progenitor(P, X),
                irmao(P,Y),
                sexo(X, feminino).
 ---------------------------------------------------------------------------------------
-Questão 02:
+Questão 06:
 
 %--classes de comboios
 % classe( Sigla, Nome, Preco ) :- Nome descreve a classe (tipo) de comboio identificado pela Sigla
@@ -75,5 +74,59 @@ horario( 40003,pombal,13:45 ).
 horario( 40003,coimbra,14:10 ).
 horario( 40003,aveiro,14:50 ).
 
+
 partida(E, H, CodC, Cl, D) :- horario(CodC, E, H),
-    			      comboio(CodC, Cl, E, D).
+    			      comboio(CodC, Cl, _, D),    
+   			      classe(Cl, _, _).
+
+----------------------------------------------------------------------------------------------------------
+QUESTÃO 07: 
+
+ALTERNATIVA E) III e IV
+
+-----------------------------------------------------------------------------------------------------------
+QUESTÃO 08:
+
+a) Metodo A* = A, B, H, G, I, J, M -> custo: 80 ... Heuristica inadmissivel, custo da heuristica baixo e heuristica 
+mal planejada contribui para esse resultado
+
+b) Metodo Guloso = A, C, D, F, L, M -> custo: 46,18... Sem a heuristica o metodo guloso abre todas as possibilidades 
+de rota e escolhe a menor...
+
+-----------------------------------------------------------------------------------------------------------
+QUESTÃO 08: 
+ Explique o que é um Sistema Inteligente com processamento inteligente. O que é preciso para que isso ocorra?
+
+ Um sistema inteligente com processamento inteligente é um sistema que é capaz de solucionar problemas, através de testes e força bruta,
+o que ajuda ser inteligente e é o diferencial nessa tarefa é a base de conhecimento que o sistema possui, ou seja, a experiência. As soluções
+são encontradas através dos métodos de buscas. E conforme a base de conhecimento seja bem fortalecida, o sistema consegue identificar padrões, 
+buscando encontrar a melhor solução de forma inteligente.
+
+-----------------------------------------------------------------------------------------------------------
+QUESTÃO 09:
+
+a) Estados:
+   int Me = 3
+   int Ce = 3
+   int Md = 0
+   int Cd = 0
+   
+
+b) Estado inicial: (Me = 3 && Ce = 3) && (Md = 0 && Cd = 0)
+	Margem Esquerda | Margem Direita
+	MMM CCC         |
+  
+   Estado final: (Me = 0 && Ce = 0) && (Md = 3 && Cd = 3)
+	Margem Esquerda | Margem Direita
+	                | MMM CCC  
+
+c) Regras e restrições:
+	
+	C <= M (Numero de canibais tem que ser menor ou igual ao numero de missionarios)
+	
+	Levar1M
+	Levar1C
+	Levar2M
+	Levar2C
+	Levar1Me1C
+	
